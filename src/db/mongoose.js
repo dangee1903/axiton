@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
+require('dotenv').config()
 
-mongoose.connect('mongodb://127.0.0.1:27017/task-manager-api', {
+const connectUrl = (process.env.NODE_ENV === 'production') ? process.env.MONGODB_PRODUCT : process.env.MONGODB_LOCAL
+mongoose.connect(connectUrl, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useFindAndModify: false,
